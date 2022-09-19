@@ -16,9 +16,12 @@ import file from "./254_page_26_Contract-Breach.pdf";
 import data from "./data.json";
 
 export default function App() {
-  var areas = [];
+  const areas = [];
+  const [key, setKey] = useState("");
+  const [viewPdf, setViewPdf] = useState(file);
+  
+  //Set Position
   const getArea = (val) => {
-    console.log("test", val);
     areas.push({
       left: 55,
       top: 20.0772,
@@ -58,15 +61,12 @@ export default function App() {
     renderHighlights,
     trigger: Trigger.toggle
   });
-  const [key, setKey] = useState("");
   const searchPluginInstance = searchPlugin({ keyword: [key] });
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  const [viewPdf, setViewPdf] = useState(file);
 
   const handleClick = (val) => {
     setKey(val.value);
     getArea(val);
-    console.log(key);
   };
 
   useEffect(() => {
